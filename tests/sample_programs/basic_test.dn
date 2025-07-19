@@ -1,0 +1,4 @@
+function main() {
+    println("This is a test");
+    return 0;
+}

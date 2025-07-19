@@ -1,0 +1,9 @@
+
+function main() {
+    let dynamic_var;
+    dynamic_var = 42;
+    println("dynamic as int:", dynamic_var);
+    dynamic_var = "Hello";
+    println("dynamic as string:", dynamic_var);
+    return 0;
+}

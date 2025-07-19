@@ -1,0 +1,17 @@
+function testReturn() {
+    println("Inside testReturn");
+    return 42;
+}
+
+function main() {
+    println("Testing return values...");
+    let result = testReturn();
+    println("Result type should be int");
+    println("Result value:", result);
+    
+    // Test direct number assignment for comparison
+    let direct = 42;
+    println("Direct value:", direct);
+    
+    return 0;
+}

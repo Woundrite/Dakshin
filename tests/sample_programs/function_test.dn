@@ -1,0 +1,11 @@
+function testFunc(x) {
+    println("In testFunc, x =", x);
+    return x * 2;
+}
+
+function main() {
+    println("Before function call");
+    let result = testFunc(5);
+    println("Result:", result);
+    return 0;
+}

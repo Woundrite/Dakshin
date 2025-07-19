@@ -1,0 +1,47 @@
+function main() -> int {
+    println("=== Test Up To String Corruption ===");
+    
+    // Test 1: Basic I/O Functions
+    println("TEST 1: Basic I/O Functions");
+    print("Hello ");
+    print("World! ");
+    println("This is a complete line.");
+    println("");
+    
+    // Test 2: Variable Declarations and String Operations
+    println("TEST 2: Variables and String Operations");
+    let message = "Dakshin Language";
+    let greeting = "Welcome to ";
+    println("Message:", message);
+    println("Length of message:", length(message));
+    println("Combined:", greeting, message);
+    println("");
+    
+    // Test 3: Math Operations and Functions
+    println("TEST 3: Math Operations");
+    let num1 = 42;
+    let num2 = 17;
+    println("Number 1:", num1);
+    println("Number 2:", num2);
+    println("Sum:", num1 + num2);
+    println("Difference:", num1 - num2);
+    println("Product:", num1 * num2);
+    println("Division:", num1 / num2);
+    println("Absolute value of -25:", abs(-25));
+    println("Minimum of", num1, "and", num2, ":", min(num1, num2));
+    println("Maximum of", num1, "and", num2, ":", max(num1, num2));
+    println("");
+    
+    // Test 4: System Functions
+    println("TEST 4: System Functions");
+    println("Current Unix timestamp:", time());
+    println("");
+    
+    // Test 5: String Functions - THIS IS WHERE CORRUPTION HAPPENS
+    println("TEST 5: String Functions");
+    let test_string = "Programming";
+    println("BEFORE: Test string:", test_string);
+    println("Checking string after time() call...");
+    
+    return 0;
+}

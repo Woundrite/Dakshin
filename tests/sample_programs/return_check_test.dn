@@ -1,0 +1,16 @@
+function add(a, b) {
+    let result = a + b;
+    return result;
+}
+
+function main() {
+    println("Testing return statements...");
+    let sum = add(5, 3);
+    println("5 + 3 =", sum);
+    
+    if (sum > 0) {
+        return 42;  // Early return from main
+    }
+    
+    return 0;  // Normal return
+}

@@ -1,0 +1,14 @@
+function simpleFunc() {
+    return 99;
+}
+
+function main() {
+    let x = 42;          // Direct assignment
+    let y = simpleFunc(); // Function call assignment
+    
+    // These should both print as integers
+    println("Direct x:", x);
+    println("Function y:", y);
+    
+    return 0;
+}

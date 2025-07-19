@@ -1,0 +1,20 @@
+function main() {
+    println("=== GUI Function Test ===");
+    
+    // Test basic message box
+    msgbox("Hello from Dakshin Language!");
+    
+    // Test alert function
+    alert("This is an alert message");
+    
+    // Test beep function
+    println("Playing system beep...");
+    beep();
+    
+    // Test confirmation dialog
+    let result = confirm("Do you want to continue?");
+    println("Confirmation result:", result);
+    
+    println("GUI test completed!");
+    return 0;
+}

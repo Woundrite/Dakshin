@@ -1,0 +1,14 @@
+// Test Dakshin program for Windows compatibility
+function main() {
+    print("Hello, Windows with NASM!");
+    println("Testing standard library functions");
+    
+    // Test string length
+    let message = "Test string";
+    println("String length:", length(message));
+    
+    // Test time function
+    println("Current time:", time());
+    
+    return 0;
+}

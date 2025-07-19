@@ -1,0 +1,4 @@
+function main() {
+    print("Hello from cleaned up Dakshin project!");
+    return 0;
+}

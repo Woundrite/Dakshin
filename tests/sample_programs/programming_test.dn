@@ -1,0 +1,10 @@
+function main() -> int {
+    println("=== Programming String Test ===");
+    
+    let test_string = "Programming";
+    println("Test string:", test_string);
+    println("String length:", length(test_string));
+    println("String length (using strlen):", strlen(test_string));
+    
+    return 0;
+}

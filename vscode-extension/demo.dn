@@ -1,0 +1,81 @@
+// Demo file to showcase Dakshin VS Code extension features
+// Open this file in VS Code with the Dakshin extension installed
+
+function main() -> int {
+    // 🎨 Notice syntax highlighting for keywords, types, and operators
+    int number = 42;
+    string message = "Welcome to Dakshin!";
+    float pi = 3.14159;
+    bool isValid = true;
+    
+    // 💡 Try typing 'pr' - you should see print() auto-completion
+    print("=== Dakshin Language Demo ===");
+    println(message);
+    
+    // 🔢 Math functions with IntelliSense
+    // Try hovering over these functions to see documentation
+    int absolute = abs(-15);
+    int maximum = max(10, 20);
+    float square_root = sqrt(16.0);
+    
+    print("Absolute value of -15: ");
+    println(int_to_string(absolute));
+    
+    // 🔤 String operations
+    string text = "Hello, World!";
+    int length = strlen(text);
+    string upper = to_upper(text);
+    
+    print("Original: ");
+    println(text);
+    print("Uppercase: ");
+    println(upper);
+    print("Length: ");
+    println(int_to_string(length));
+    
+    // 🎮 GUI example (hover over functions for documentation)
+    int window = create_window("Demo Window", 400, 300);
+    if (window != 0) {
+        set_window_background(window, 255, 255, 255);
+        draw_text(window, "Hello from Dakshin!", 50, 50, 0, 0, 0);
+        show_window(window);
+    }
+    
+    // 🔄 Control flow with proper highlighting
+    for (int i = 1; i <= 5; i = i + 1) {
+        print("Count: ");
+        println(int_to_string(i));
+    }
+    
+    // 📝 Try using code snippets:
+    // - Type 'func' and press Tab for function template
+    // - Type 'if' and press Tab for if-else template  
+    // - Type 'while' and press Tab for while loop template
+    
+    return 0;
+}
+
+// 💡 Try creating a new function - type 'func' and press Tab
+function calculate_area(float width, float height) -> float {
+    // Notice parameter and return type highlighting
+    return width * height;
+}
+
+// 🔍 IntelliSense features to try:
+// 1. Auto-completion: Type partial function names
+// 2. Hover documentation: Hover over built-in functions
+// 3. Function signatures: Type function name and opening parenthesis
+// 4. Error detection: Try introducing syntax errors
+// 5. Code snippets: Use Tab completion for templates
+
+/* 📋 Available VS Code commands (Ctrl+Shift+P):
+   - Dakshin: Compile Current File
+   - Dakshin: Run Current File  
+   - Dakshin: Create New Project
+   
+   ⌨️ Try these shortcuts:
+   - Ctrl+Space: Force auto-completion
+   - Ctrl+Shift+Space: Parameter hints
+   - F12: Go to definition (for user functions)
+   - Ctrl+K Ctrl+I: Show hover information
+*/

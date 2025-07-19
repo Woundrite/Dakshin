@@ -1,0 +1,21 @@
+function main() {
+    println("=== Math Function Test ===");
+    
+    let num1 = 42;
+    let num2 = 17;
+    let negative = -25;
+    
+    println("Numbers:", num1, "and", num2);
+    
+    // Test abs function
+    println("Absolute value of", negative, "is:", abs(negative));
+    
+    // Test min function  
+    println("Minimum of", num1, "and", num2, "is:", min(num1, num2));
+    
+    // Test max function
+    println("Maximum of", num1, "and", num2, "is:", max(num1, num2));
+    
+    println("Math test completed!");
+    return 0;
+}

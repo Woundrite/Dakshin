@@ -1,0 +1,6 @@
+// Simple I/O test for Dakshin
+fun main() -> int {
+    print("Hello");
+    println(" World!");
+    return 0;
+}

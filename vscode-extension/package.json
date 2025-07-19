@@ -1,0 +1,181 @@
+{
+    "name": "dakshin-language",
+    "displayName": "Dakshin Language Support",
+    "description": "Language support for Dakshin programming language",
+    "version": "0.1.0",
+    "publisher": "dakshin-dev",
+    "engines": {
+        "vscode": "^1.74.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Snippets",
+        "Debuggers"
+    ],
+    "keywords": [
+        "dakshin",
+        "programming",
+        "language",
+        "compiler",
+        "systems"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/your-username/dakshin-language"
+    },
+    "bugs": {
+        "url": "https://github.com/your-username/dakshin-language/issues"
+    },
+    "homepage": "https://github.com/your-username/dakshin-language#readme",
+    "activationEvents": [
+        "onLanguage:dakshin"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "dakshin",
+                "aliases": [
+                    "Dakshin",
+                    "dakshin"
+                ],
+                "extensions": [
+                    ".dn"
+                ],
+                "configuration": "./language-configuration.json",
+                "icon": {
+                    "light": "./icons/dakshin-light.png",
+                    "dark": "./icons/dakshin-dark.png"
+                }
+            }
+        ],
+        "grammars": [
+            {
+                "language": "dakshin",
+                "scopeName": "source.dakshin",
+                "path": "./syntaxes/dakshin.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "dakshin",
+                "path": "./snippets/dakshin.json"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Dakshin Configuration",
+            "properties": {
+                "dakshin.compiler.path": {
+                    "type": "string",
+                    "default": "python src/compiler.py",
+                    "description": "Path to the Dakshin compiler"
+                },
+                "dakshin.compiler.outputPath": {
+                    "type": "string",
+                    "default": "./output",
+                    "description": "Output directory for compiled files"
+                },
+                "dakshin.linting.enabled": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable real-time error checking"
+                },
+                "dakshin.build.autoSave": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Automatically compile on save"
+                }
+            }
+        },
+        "commands": [
+            {
+                "command": "dakshin.compile",
+                "title": "Compile Dakshin File",
+                "category": "Dakshin"
+            },
+            {
+                "command": "dakshin.run",
+                "title": "Compile and Run",
+                "category": "Dakshin"
+            },
+            {
+                "command": "dakshin.createProject",
+                "title": "Create New Dakshin Project",
+                "category": "Dakshin"
+            },
+            {
+                "command": "dakshin.showAST",
+                "title": "Show AST",
+                "category": "Dakshin"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "when": "resourceExtname == .dn",
+                    "command": "dakshin.compile",
+                    "group": "dakshin"
+                },
+                {
+                    "when": "resourceExtname == .dn",
+                    "command": "dakshin.run",
+                    "group": "dakshin"
+                }
+            ],
+            "commandPalette": [
+                {
+                    "command": "dakshin.compile",
+                    "when": "resourceExtname == .dn"
+                },
+                {
+                    "command": "dakshin.run",
+                    "when": "resourceExtname == .dn"
+                }
+            ]
+        },
+        "keybindings": [
+            {
+                "command": "dakshin.compile",
+                "key": "ctrl+shift+b",
+                "when": "resourceExtname == .dn"
+            },
+            {
+                "command": "dakshin.run",
+                "key": "f5",
+                "when": "resourceExtname == .dn"
+            }
+        ],
+        "taskDefinitions": [
+            {
+                "type": "dakshin",
+                "required": [
+                    "file"
+                ],
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "description": "The Dakshin file to compile"
+                    },
+                    "output": {
+                        "type": "string",
+                        "description": "Output file name"
+                    }
+                }
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.74.0",
+        "@types/node": "16.x",
+        "typescript": "^4.9.4"
+    },
+    "dependencies": {
+        "child_process": "^1.0.2"
+    }
+}

@@ -1,0 +1,170 @@
+// Comprehensive test program for Dakshin Programming Language
+// Tests all implemented features and standard library functions
+
+function main() {
+    println("=== Dakshin Programming Language - Comprehensive Test ===");
+    println("");
+    
+    // Test 1: Basic I/O Functions
+    println("TEST 1: Basic I/O Functions");
+    print("Hello ");
+    print("World! ");
+    println("This is a complete line.");
+    println("");
+    
+    // Test 2: Variable Declarations and String Operations
+    println("TEST 2: Variables and String Operations");
+    let message = "Dakshin Language";
+    let greeting = "Welcome to ";
+    println("Message:", message);
+    println("Length of message:", length(message));
+    println("Combined:", greeting, message);
+    println("");
+    
+    // Test 3: Math Operations and Functions
+    println("TEST 3: Math Operations");
+    let num1 = 42;
+    let num2 = 17;
+    println("Number 1:", num1);
+    println("Number 2:", num2);
+    println("Sum:", num1 + num2);
+    println("Difference:", num1 - num2);
+    println("Product:", num1 * num2);
+    println("Division:", num1 / num2);
+    println("Absolute value of -25:", abs(-25));
+    println("Minimum of", num1, "and", num2, ":", min(num1, num2));
+    println("Maximum of", num1, "and", num2, ":", max(num1, num2));
+    println("");
+    
+    // Test 4: System Functions
+    println("TEST 4: System Functions");
+    println("Current Unix timestamp:", time());
+    println("");
+    
+    // Test 5: String Functions
+    println("TEST 5: String Functions");
+    let test_string = "Programming";
+    println("Test string:", test_string);
+    println("String length:", length(test_string));
+    println("String length (using strlen):", strlen(test_string));
+    println("");
+    
+    // Test 6: Type Conversion Functions
+    println("TEST 6: Type Conversion");
+    let number_str = "123";
+    println("String representation:", number_str);
+    println("Converted to integer:", toint(number_str));
+    println("");
+    
+    // Test 7: Comparison Operations
+    println("TEST 7: Comparison Operations");
+    let x = 10;
+    let y = 20;
+    println("x =", x, ", y =", y);
+    println("x == y:", x == y);
+    println("x != y:", x != y);
+    println("x < y:", x < y);
+    println("x > y:", x > y);
+    println("");
+    
+    // Test 8: Conditional Statements
+    println("TEST 8: Conditional Logic");
+    if (x < y) {
+        println("x is less than y - condition works!");
+    } else {
+        println("Condition failed");
+    }
+    
+    if (x > y) {
+        println("This should not print");
+    } else {
+        println("Else clause works correctly");
+    }
+    println("");
+    
+    // Test 9: Loop Constructs
+    println("TEST 9: Loop Constructs");
+    println("Counting from 1 to 5:");
+    let counter = 1;
+    while (counter <= 5) {
+        println("Count:", counter);
+        counter = counter + 1;
+    }
+    println("");
+    
+    // Test 10: For Loop
+    println("TEST 10: For Loop");
+    println("For loop counting:");
+    for (let i = 0; i < 3; i = i + 1) {
+        println("Iteration:", i);
+    }
+    println("");
+    
+    // Test 11: Function Calls
+    println("TEST 11: Function Calls");
+    println("Testing function call chain:");
+    let result : int = performCalculation(5, 3);
+    println("Function result:", result);
+    println("");
+    
+    // Test 12: Memory and Advanced Features
+    println("TEST 12: Advanced Features");
+    testAdvancedFeatures();
+    println("");
+    
+    // Test 13: Error Handling
+    println("TEST 13: Error Scenarios");
+    testErrorScenarios();
+    println("");
+    
+    println("=== ALL TESTS COMPLETED ===");
+    println("If you see this message, all basic features are working!");
+    
+    return 0;
+}
+
+// Helper function to test function definitions and calls
+function performCalculation(a, b) -> int {
+    println("Inside performCalculation function");
+    println("Parameter a:", a);
+    println("Parameter b:", b);
+    let sum = a + b;
+    let product = a * b;
+    println("Sum:", sum);
+    println("Product:", product);
+    return sum + product;
+}
+
+// Function to test advanced features
+function testAdvancedFeatures() {
+    println("Testing advanced string operations...");
+    let sample = "Advanced Test";
+    println("Sample string:", sample);
+    println("Length:", length(sample));
+    
+    println("Testing mathematical operations...");
+    let val1 = 100;
+    let val2 = 50;
+    println("Values:", val1, "and", val2);
+    println("Absolute difference:", abs(val1 - val2));
+}
+
+// Function to test potential error scenarios
+function testErrorScenarios() {
+    println("Testing edge cases and error scenarios...");
+    
+    // Test empty string
+    let empty_str = "";
+    println("Empty string length:", length(empty_str));
+    
+    // Test zero values
+    let zero = 0;
+    println("Absolute value of zero:", abs(zero));
+    println("Min with zero:", min(zero, 10));
+    println("Max with zero:", max(zero, 10));
+    
+    // Test negative numbers
+    let negative = -42;
+    println("Negative number:", negative);
+    println("Absolute value:", abs(negative));
+}

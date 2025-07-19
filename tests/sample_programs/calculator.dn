@@ -1,0 +1,88 @@
+// Simple calculator program demonstrating basic language features
+
+import math.operations as MathOps;
+
+class Calculator {
+    private let history: list = new list();
+    
+    public Calculator() {
+        print("Calculator initialized");
+    }
+    
+    public function add(a: float, b: float) -> float {
+        let result: float = a + b;
+        this.addToHistory("add", a, b, result);
+        return result;
+    }
+    
+    public function subtract(a: float, b: float) -> float {
+        let result: float = a - b;
+        this.addToHistory("subtract", a, b, result);
+        return result;
+    }
+    
+    public function multiply(a: float, b: float) -> float {
+        let result: float = a * b;
+        this.addToHistory("multiply", a, b, result);
+        return result;
+    }
+    
+    public function divide(a: float, b: float) -> float {
+        if (b == 0.0) {
+            throw new DivisionByZeroError("Cannot divide by zero");
+        }
+        let result: float = a / b;
+        this.addToHistory("divide", a, b, result);
+        return result;
+    }
+    
+    public function power(base: float, exponent: int) -> float {
+        let result: float = 1.0;
+        for (let i = 0; i < exponent; i = i + 1) {
+            result = result * base;
+        }
+        this.addToHistory("power", base, exponent, result);
+        return result;
+    }
+    
+    private function addToHistory(operation: string, a: float, b: float, result: float) {
+        let entry: string = operation + "(" + a + ", " + b + ") = " + result;
+        this.history.add(entry);
+    }
+    
+    public function printHistory() {
+        print("=== Calculation History ===");
+        for (let i = 0; i < this.history.size(); i = i + 1) {
+            print((i + 1) + ". " + this.history.get(i));
+        }
+    }
+    
+    public function clearHistory() {
+        this.history.clear();
+        print("History cleared");
+    }
+}
+
+function main() -> int {
+    let calc: Calculator = new Calculator();
+    
+    try {
+        // Basic operations
+        print("10 + 5 = " + calc.add(10.0, 5.0));
+        print("10 - 5 = " + calc.subtract(10.0, 5.0));
+        print("10 * 5 = " + calc.multiply(10.0, 5.0));
+        print("10 / 5 = " + calc.divide(10.0, 5.0));
+        print("2^8 = " + calc.power(2.0, 8));
+        
+        // Test division by zero
+        print("Attempting division by zero...");
+        calc.divide(10.0, 0.0);
+        
+    } catch (e: DivisionByZeroError) {
+        print("Error caught: " + e.getMessage());
+    } finally {
+        calc.printHistory();
+    }
+    
+    return 0;
+}

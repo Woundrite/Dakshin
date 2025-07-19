@@ -1,0 +1,10 @@
+function simpleTest(x) {
+    println("In simpleTest, x =", x);
+}
+
+function main() {
+    println("Before function call");
+    simpleTest(5);
+    println("After function call");
+    return 0;
+}

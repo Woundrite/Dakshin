@@ -1,0 +1,9 @@
+function debugTest(x) {
+    println("Parameter x received");
+    println("x =", x);
+}
+
+function main() {
+    debugTest(42);
+    return 0;
+}

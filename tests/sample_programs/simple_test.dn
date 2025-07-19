@@ -1,0 +1,5 @@
+function main() {
+    string message = "Test";
+    println("Testing length function...");
+    return 0;
+}

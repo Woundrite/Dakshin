@@ -1,0 +1,8 @@
+
+function main() {
+    let a = 10;
+    let b = 5;
+    println("sum =", a + b);
+    println("diff =", a - b);
+    return 0;
+}

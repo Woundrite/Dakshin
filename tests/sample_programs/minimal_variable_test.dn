@@ -1,0 +1,20 @@
+// Minimal test to check variable integer printing
+function main() {
+    println("=== Minimal Variable Test ===");
+    
+    // Test basic integer variables
+    let x = 42;
+    let y = 100;
+    
+    println("x =", x);
+    println("y =", y);
+    println("x + y =", x + y);
+    
+    // Test string variable
+    let message = "Hello";
+    println("Message:", message);
+    println("Length:", length(message));
+    
+    println("Test completed!");
+    return 0;
+}

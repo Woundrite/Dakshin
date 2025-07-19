@@ -1,0 +1,32 @@
+// Simple test to identify and fix core issues
+function main() {
+    println("=== Simple Feature Test ===");
+    
+    // Test 1: Basic variables and math
+    let x = 10;
+    let y = 5;
+    println("x =", x);
+    println("y =", y);
+    println("x + y =", x + y);
+    
+    // Test 2: String operations
+    let message = "Hello World";
+    println("Message:", message);
+    println("Length:", length(message));
+    
+    // Test 3: Simple conditional
+    if (x > y) {
+        println("x is greater than y");
+    }
+    
+    // Test 4: Simple while loop (avoid for loop for now)
+    let counter = 1;
+    println("Counting to 3:");
+    while (counter <= 3) {
+        println("Count:", counter);
+        counter = counter + 1;
+    }
+    
+    println("Test completed successfully!");
+    return 0;
+}

@@ -1,0 +1,15 @@
+function main() -> int {
+    println("=== Loop Test ===");
+    
+    let counter = 1;
+    println("Initial counter:", counter);
+    
+    println("Testing while loop:");
+    while (counter <= 3) {
+        println("Count:", counter);
+        counter = counter + 1;
+    }
+    
+    println("Final counter:", counter);
+    return 0;
+}

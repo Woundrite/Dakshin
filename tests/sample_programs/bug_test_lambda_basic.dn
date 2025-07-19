@@ -1,0 +1,7 @@
+
+function main() {
+    let add = (x, y) => x + y;
+    let result = add(3, 4);
+    println("lambda result:", result);
+    return 0;
+}

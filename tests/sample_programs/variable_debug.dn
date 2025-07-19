@@ -1,0 +1,18 @@
+function main() -> int {
+    println("=== Variable Assignment Debug Test ===");
+    
+    println("Step 1: Assigning x = 10");
+    let x = 10;
+    println("x =", x);
+    
+    println("Step 2: Assigning y = 20");
+    let y = 20;
+    println("x =", x, "y =", y);
+    
+    println("Step 3: Assigning test_string = Programming");
+    let test_string = "Programming";
+    println("x =", x, "y =", y);
+    println("test_string =", test_string);
+    
+    return 0;
+}

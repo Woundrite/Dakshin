@@ -1,0 +1,11 @@
+function debugTypes(x) {
+    // Test variable assignment to force type inference
+    let y = x;
+    println("x type test:", x);
+    println("y type test:", y);
+}
+
+function main() {
+    debugTypes(123);
+    return 0;
+}

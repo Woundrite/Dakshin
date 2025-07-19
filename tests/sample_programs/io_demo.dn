@@ -1,0 +1,57 @@
+// Dakshin Standard I/O Demo
+// This program demonstrates the built-in I/O functions
+
+fun main() -> int {
+    // Basic output functions
+    print("Hello, ");
+    println("World!");
+    
+    // Input function
+    let name = input("Enter your name: ");
+    println("Hello, " + name);
+    
+    // String functions
+    let message = "Dakshin Programming Language";
+    let length = strlen(message);
+    println("Message length: " + length);
+    
+    // Math functions
+    let a = 10;
+    let b = 20;
+    let sum = a + b;
+    let minimum = min(a, b);
+    let maximum = max(a, b);
+    let absolute = abs(-15);
+    
+    println("Sum: " + sum);
+    println("Min: " + minimum);
+    println("Max: " + maximum);
+    println("Absolute: " + absolute);
+    
+    // File I/O demonstration
+    let file = open("test.txt", "w");
+    if (file != null) {
+        write(file, "Hello from Dakshin!");
+        close(file);
+        println("File written successfully");
+    }
+    
+    // Type conversions
+    let numberStr = "123";
+    let number = toint(numberStr);
+    println("Converted number: " + number);
+    
+    // Memory functions
+    let ptr = malloc(100);
+    if (ptr != null) {
+        println("Memory allocated successfully");
+        free(ptr);
+        println("Memory freed");
+    }
+    
+    // System functions
+    let currentTime = time();
+    println("Current time: " + currentTime);
+    
+    return 0;
+}

@@ -1,0 +1,251 @@
+// Sample program demonstrating basic language features
+// Based on the grammar defined in grammer.enbf
+
+// Import statements
+import math.operations;
+from collections import List, Map;
+
+// Namespace declaration
+namespace Examples {
+    
+    // Class declaration with inheritance
+    abstract class Shape {
+        protected let area: float;
+        protected let perimeter: float;
+        
+        // Abstract method
+        public abstract function calculateArea() -> float;
+        public abstract function calculatePerimeter() -> float;
+        
+        // Concrete method
+        public function getInfo() -> string {
+            return "Area: " + this.area + ", Perimeter: " + this.perimeter;
+        }
+    }
+    
+    // Final class with inheritance
+    final class Circle : Shape {
+        private let radius: float;
+        private static let PI: float = 3.14159;
+        
+        // Constructor with super call
+        public Circle(r: float) : super() {
+            this.radius = r;
+            this.area = this.calculateArea();
+            this.perimeter = this.calculatePerimeter();
+        }
+        
+        // Override methods
+        public override function calculateArea() -> float {
+            return Circle.PI * this.radius * this.radius;
+        }
+        
+        public override function calculatePerimeter() -> float {
+            return 2.0 * Circle.PI * this.radius;
+        }
+        
+        public function getRadius() -> float {
+            return this.radius;
+        }
+    }
+    
+    // Class with multiple inheritance
+    class Rectangle : Shape {
+        private let width: float;
+        private let height: float;
+        
+        public Rectangle(w: float, h: float) : super() {
+            this.width = w;
+            this.height = h;
+            this.area = this.calculateArea();
+            this.perimeter = this.calculatePerimeter();
+        }
+        
+        public override function calculateArea() -> float {
+            return this.width * this.height;
+        }
+        
+        public override function calculatePerimeter() -> float {
+            return 2.0 * (this.width + this.height);
+        }
+    }
+}
+
+// Function declarations
+function processShapes(shapes: list) -> float {
+    let totalArea: float = 0.0;
+    
+    // For loop
+    for (let i = 0; i < shapes.size(); i = i + 1) {
+        let shape: Examples.Shape = shapes.get(i);
+        totalArea = totalArea + shape.calculateArea();
+        
+        // If-else statement
+        if (shape instanceof Examples.Circle) {
+            let circle: Examples.Circle = shape as Examples.Circle;
+            print("Circle with radius: " + circle.getRadius());
+        } else {
+            print("Other shape: " + shape.getInfo());
+        }
+    }
+    
+    return totalArea;
+}
+
+function demonstrateControlFlow() {
+    let numbers: list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let sum: int = 0;
+    let count: int = 0;
+    
+    // While loop
+    while (count < numbers.size()) {
+        let num: int = numbers.get(count);
+        
+        // Switch statement
+        switch (num % 3) {
+            case 0:
+                print(num + " is divisible by 3");
+                sum = sum + num;
+                break;
+            case 1:
+                print(num + " has remainder 1");
+                break;
+            case 2:
+                print(num + " has remainder 2");
+                break;
+            default:
+                print("Unexpected case");
+        }
+        
+        count = count + 1;
+    }
+    
+    // Do-while loop
+    let index: int = 0;
+    do {
+        print("Processing index: " + index);
+        index = index + 1;
+    } while (index < 3);
+    
+    print("Sum of numbers divisible by 3: " + sum);
+}
+
+function demonstrateErrorHandling() {
+    // Try-catch-finally block
+    try {
+        let result: float = divide(10.0, 0.0);
+        print("Result: " + result);
+    } catch (e: DivisionByZeroError) {
+        print("Cannot divide by zero: " + e.getMessage());
+    } catch (e: MathError) {
+        print("Math error: " + e.getMessage());
+    } finally {
+        print("Division operation completed");
+    }
+}
+
+function divide(a: float, b: float) -> float {
+    if (b == 0.0) {
+        throw new DivisionByZeroError("Division by zero attempted");
+    }
+    return a / b;
+}
+
+function demonstrateFunctionalFeatures() {
+    let numbers: list = [1, 2, 3, 4, 5];
+    
+    // Lambda expressions
+    let doubler = (x: int) => x * 2;
+    let squarer = (x: int) => x * x;
+    let combiner = (a: int, b: int) => a + b;
+    
+    // Complex lambda with block
+    let processor = (x: int) => {
+        if (x % 2 == 0) {
+            return x * 3;
+        } else {
+            return x + 1;
+        }
+    };
+    
+    // Apply functions
+    for (let i = 0; i < numbers.size(); i = i + 1) {
+        let num: int = numbers.get(i);
+        print("Original: " + num + 
+              ", Doubled: " + doubler(num) + 
+              ", Squared: " + squarer(num) + 
+              ", Processed: " + processor(num));
+    }
+}
+
+function demonstratePointers() {
+    let x: int = 10;
+    let y: int = 20;
+    
+    print("Before swap: x = " + x + ", y = " + y);
+    
+    // Pointer operations
+    swap(&x, &y);
+    
+    print("After swap: x = " + x + ", y = " + y);
+}
+
+function swap(a: int*, b: int*) {
+    let temp: int = *a;
+    *a = *b;
+    *b = temp;
+}
+
+function demonstrateMatchStatement(input: string) -> string {
+    // Match statement with regex patterns
+    match input {
+        /^[0-9]+$/ => return "Number";
+        /^[a-zA-Z]+$/ => return "Text";
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ => return "Email";
+        /^\+?[0-9\-\s()]+$/ => return "Phone";
+        else => return "Unknown format";
+    }
+}
+
+// Main function
+function main() -> int {
+    print("=== Dakshin Language Demo ===");
+    
+    // Create shapes
+    let shapes: list = new list();
+    shapes.add(new Examples.Circle(5.0));
+    shapes.add(new Examples.Rectangle(4.0, 6.0));
+    shapes.add(new Examples.Circle(3.0));
+    
+    // Process shapes
+    let totalArea: float = processShapes(shapes);
+    print("Total area of all shapes: " + totalArea);
+    
+    // Demonstrate control flow
+    print("\n=== Control Flow Demo ===");
+    demonstrateControlFlow();
+    
+    // Demonstrate error handling
+    print("\n=== Error Handling Demo ===");
+    demonstrateErrorHandling();
+    
+    // Demonstrate functional features
+    print("\n=== Functional Features Demo ===");
+    demonstrateFunctionalFeatures();
+    
+    // Demonstrate pointers
+    print("\n=== Pointer Operations Demo ===");
+    demonstratePointers();
+    
+    // Demonstrate match statements
+    print("\n=== Match Statement Demo ===");
+    let testInputs: list = ["123", "hello", "test@example.com", "+1-555-123-4567"];
+    for (let i = 0; i < testInputs.size(); i = i + 1) {
+        let input: string = testInputs.get(i);
+        let type: string = demonstrateMatchStatement(input);
+        print(input + " -> " + type);
+    }
+    
+    print("\n=== Demo Complete ===");
+    return 0;
+}

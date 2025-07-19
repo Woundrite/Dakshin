@@ -1,0 +1,10 @@
+function main() {
+    println("Starting for loop test");
+    
+    for (let i = 0; i < 3; i = i + 1) {
+        println("Iteration:", i);
+    }
+    
+    println("For loop complete");
+    return 0;
+}

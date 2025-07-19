@@ -1,0 +1,96 @@
+{
+    "Main Function": {
+        "prefix": ["main", "function main"],
+        "body": ["function main() {", "\t$1", "\treturn 0;", "}"],
+        "description": "Create main function"
+    },
+    "Function": {
+        "prefix": ["func", "function"],
+        "body": [
+            "function ${1:functionName}(${2:parameters}) {",
+            "\t$3",
+            "\treturn ${4:0};",
+            "}"
+        ],
+        "description": "Create a function"
+    },
+    "Print Statement": {
+        "prefix": ["print", "pr"],
+        "body": ["print(\"$1\");"],
+        "description": "Print statement"
+    },
+    "Println Statement": {
+        "prefix": ["println", "pln"],
+        "body": ["println(\"$1\");"],
+        "description": "Print line statement"
+    },
+    "Variable Declaration": {
+        "prefix": ["let", "var"],
+        "body": ["let ${1:variableName} = ${2:value};"],
+        "description": "Variable declaration"
+    },
+    "If Statement": {
+        "prefix": ["if"],
+        "body": ["if (${1:condition}) {", "\t$2", "}"],
+        "description": "If statement"
+    },
+    "If-Else Statement": {
+        "prefix": ["ifelse", "ife"],
+        "body": ["if (${1:condition}) {", "\t$2", "} else {", "\t$3", "}"],
+        "description": "If-else statement"
+    },
+    "While Loop": {
+        "prefix": ["while", "wh"],
+        "body": ["while (${1:condition}) {", "\t$2", "}"],
+        "description": "While loop"
+    },
+    "For Loop": {
+        "prefix": ["for"],
+        "body": [
+            "for (let ${1:i} = ${2:0}; ${1:i} < ${3:10}; ${1:i} = ${1:i} + 1) {",
+            "\t$4",
+            "}"
+        ],
+        "description": "For loop"
+    },
+    "String Length": {
+        "prefix": ["strlen", "length"],
+        "body": ["length(${1:string})"],
+        "description": "Get string length"
+    },
+    "Math Functions": {
+        "prefix": ["abs"],
+        "body": ["abs(${1:number})"],
+        "description": "Absolute value"
+    },
+    "Min/Max": {
+        "prefix": ["min"],
+        "body": ["min(${1:a}, ${2:b})"],
+        "description": "Minimum of two values"
+    },
+    "GUI Alert": {
+        "prefix": ["alert"],
+        "body": ["alert(\"${1:message}\");"],
+        "description": "Show alert dialog"
+    },
+    "GUI Confirm": {
+        "prefix": ["confirm"],
+        "body": ["let ${1:result} = confirm(\"${2:message}\");"],
+        "description": "Show confirmation dialog"
+    },
+    "Comment Block": {
+        "prefix": ["/*", "comment"],
+        "body": ["/*", " * $1", " */"],
+        "description": "Block comment"
+    },
+    "Hello World": {
+        "prefix": ["hello", "helloworld"],
+        "body": [
+            "function main() {",
+            "\tprintln(\"Hello, World!\");",
+            "\treturn 0;",
+            "}"
+        ],
+        "description": "Hello World program"
+    }
+}

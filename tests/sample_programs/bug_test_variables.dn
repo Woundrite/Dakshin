@@ -1,0 +1,8 @@
+
+function main() {
+    let x = 42;
+    let msg = "Test";
+    println("x =", x);
+    println("msg =", msg);
+    return 0;
+}

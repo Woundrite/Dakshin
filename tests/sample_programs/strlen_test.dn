@@ -1,0 +1,15 @@
+function main() -> int {
+    println("=== String Length Test ===");
+    
+    let test_str = "Hello";
+    println("String:", test_str);
+    println("Before length call");
+    
+    let len = length(test_str);
+    println("After length call");
+    println("Length:", len);
+    
+    println("String again:", test_str);
+    
+    return 0;
+}

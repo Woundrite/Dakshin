@@ -1,0 +1,19 @@
+function main() -> int {
+    println("=== Simple Variable Test ===");
+    
+    // Test simple variable assignment
+    let x = 10;
+    println("x should be 10:");
+    println("x =", x);
+    
+    let y = 20;
+    println("y should be 20:");
+    println("y =", y);
+    
+    // Test string assignment
+    let message = "Hello";
+    println("message should be Hello:");
+    println("message =", message);
+    
+    return 0;
+}

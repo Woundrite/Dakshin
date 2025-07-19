@@ -1,0 +1,21 @@
+function main() {
+    println("=== Testing Lambda Functions ===");
+    
+    // Single-line lambda function
+    let square = (x) => x * x;
+    println("Square of 5:", square(5));
+    
+    // Multi-line lambda function
+    let calculate = (a, b) => {
+        let sum = a + b;
+        let product = a * b;
+        return sum + product;
+    };
+    println("Calculate(3, 4):", calculate(3, 4));
+    
+    // Lambda with no parameters
+    let getMessage = () => "Hello from lambda!";
+    println("Message:", getMessage());
+    
+    return 0;
+}

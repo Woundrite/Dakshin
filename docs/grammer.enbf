@@ -1,0 +1,121 @@
+program             = { import_statement | namespace_declaration | class_declaration | function_declaration } ;
+
+import_statement    = "import" identifier { "." identifier } [ "as" identifier ] ";" 
+                    | "from" identifier { "." identifier } "import" identifier_list ";" ;
+identifier_list     = identifier { "," identifier } ;
+
+namespace_declaration = "namespace" identifier "{" { class_declaration | function_declaration } "}" ;
+
+class_declaration   = [ "abstract" | "final" ] "class" identifier [ inheritance_list ] "{" { class_member } "}" ;
+inheritance_list    = ":" type { "," type } ;  (* multiple inheritance *)
+
+class_member        = field_declaration
+                    | method_declaration
+                    | constructor_declaration
+                    | abstract_method_declaration ;
+
+field_declaration   = [ access_modifier ] [ "static" ] variable_declaration ;
+
+method_declaration  = [ access_modifier ] [ "static" ] [ "override" ] "function"
+                      identifier "(" [ parameter_list ] ")"
+                      [ "->" type ] block ;
+
+abstract_method_declaration = [ access_modifier ] "abstract" "function" identifier "(" [ parameter_list ] ")" ";" ;
+
+constructor_declaration = [ access_modifier ] identifier "(" [ parameter_list ] ")"
+                          [ ":" "super" "(" [ argument_list ] ")" ]
+                          block ;
+
+access_modifier     = "public" | "private" | "protected" ;
+
+function_declaration = [ access_modifier ] [ "static" ] "function" identifier "(" [ parameter_list ] ")"
+                       [ "->" type ] block ;
+
+parameter_list      = parameter { "," parameter } ;
+parameter           = [ "let" ] identifier [ ":" type ] ;
+
+block               = "{" { statement } "}" ;
+
+statement           = variable_declaration
+                    | assignment
+                    | pointer_assignment
+                    | expression_statement
+                    | if_statement
+                    | while_statement
+                    | do_while_statement
+                    | for_statement
+                    | switch_statement
+                    | match_statement
+                    | try_catch_finally
+                    | return_statement
+                    | break_statement
+                    | continue_statement
+                    | block ;
+
+variable_declaration = "let" identifier [ ":" type ] [ "=" expression ] ";" ;
+
+assignment          = identifier "=" expression ";" ;
+pointer_assignment  = "*" identifier "=" expression ";" ;
+
+expression_statement = expression ";" ;
+
+if_statement        = "if" "(" expression ")" block [ "else" block ] ;
+while_statement     = "while" "(" expression ")" block ;
+do_while_statement  = "do" block "while" "(" expression ")" ";" ;
+for_statement       = "for" "(" [ expression ] ";" [ expression ] ";" [ expression ] ")" block ;
+
+switch_statement    = "switch" "(" expression ")" "{" { case_clause } [ default_clause ] "}" ;
+case_clause         = "case" literal ":" { statement } ;
+default_clause      = "default" ":" { statement } ;
+
+match_statement     = "match" expression "{" { regex_case } [ "else" "=>" statement ] "}" ;
+regex_case          = "/" regex_pattern "/" "=>" statement ;
+
+try_catch_finally   = "try" block { "catch" "(" identifier [ ":" type ] ")" block } [ "finally" block ] ;
+
+return_statement    = "return" [ expression ] ";" ;
+break_statement     = "break" ";" ;
+continue_statement  = "continue" ";" ;
+
+expression          = assignment_expr ;
+assignment_expr     = logical_or_expr ;
+
+logical_or_expr     = logical_and_expr { "||" logical_and_expr } ;
+logical_and_expr    = equality_expr { "&&" equality_expr } ;
+equality_expr       = relational_expr { ("==" | "!=") relational_expr } ;
+relational_expr     = additive_expr { ("<" | "<=" | ">" | ">=") additive_expr } ;
+additive_expr       = multiplicative_expr { ("+" | "-") multiplicative_expr } ;
+multiplicative_expr = unary_expr { ("*" | "/" | "%") unary_expr } ;
+unary_expr          = [ "!" | "-" | "*" | "&" ] primary_expr ;
+
+primary_expr        = literal
+                    | identifier
+                    | function_expression
+                    | "(" expression ")"
+                    | method_call
+                    | member_access ;
+
+function_expression = "(" [ parameter_list ] ")" "=>" expression ;
+
+method_call         = identifier "(" [ argument_list ] ")" ;
+member_access       = primary_expr "." identifier ;
+
+argument_list       = expression { "," expression } ;
+
+type                = "int" | "float" | "double" | "boolean" | "string" | "char"
+                    | "list" | "dict" | "tuple" | "set"
+                    | identifier | type "*" ;  (* pointer types *)
+
+literal             = number | string | boolean | "null" ;
+
+number              = digit { digit } [ "." digit { digit } ] ;
+string              = '"' { character } '"' ;
+boolean             = "true" | "false" ;
+regex_pattern       = { regex_characters } ;
+
+identifier          = letter { letter | digit | "_" } ;
+
+comment             = single_line_comment | multi_line_comment ;
+single_line_comment = "//" { any_char_except_newline } newline ;
+multi_line_comment  = "/*" { any_char } "*/" ;
+

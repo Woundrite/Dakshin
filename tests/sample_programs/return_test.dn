@@ -1,0 +1,9 @@
+function simpleReturn() {
+    return 42;
+}
+
+function main() {
+    let value = simpleReturn();
+    println("Returned value:", value);
+    return 0;
+}

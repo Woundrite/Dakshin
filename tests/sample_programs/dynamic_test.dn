@@ -1,0 +1,39 @@
+function main() {
+    print("=== Testing Dynamic Variables ===");
+    print("\n");
+    
+    // Dynamic variable that can hold different types
+    let dynamic;  // No type specified - should be dynamic
+    
+    dynamic = 42;
+    print("Dynamic as integer: ");
+    print(dynamic);
+    print("\n");
+    
+    dynamic = "Hello Dynamic!";
+    print("Dynamic as string: ");
+    print(dynamic);
+    print("\n");
+    
+    dynamic = 3.14;
+    print("Dynamic as float: ");
+    print(dynamic);
+    print("\n");
+    
+    // Test dynamic variables in function calls
+    testDynamicFunction(dynamic);
+    
+    return 0;
+}
+
+function testDynamicFunction(param) {
+    print("Dynamic parameter received: ");
+    print(param);
+    print("\n");
+}
+    
+    // Local dynamic variable
+    let localDynamic = param;
+    localDynamic = "Changed in function";
+    println("Local dynamic:", localDynamic);
+}

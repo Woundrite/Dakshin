@@ -1,0 +1,15 @@
+function main() {
+    let int num = 42;
+    print("num instanceof int: ");
+    print(num instanceof int);
+    print("\n");
+    
+    let string text = "Hello";
+    print("text instanceof string: ");
+    print(text instanceof string);
+    print("\n");
+    
+    print("text instanceof int: ");
+    print(text instanceof int);
+    print("\n");
+}

@@ -1,0 +1,10 @@
+function sayHello() {
+    println("Hello from function");
+}
+
+function main() {
+    println("Before function call");
+    sayHello();
+    println("After function call");
+    return 0;
+}

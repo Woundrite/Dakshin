@@ -1,0 +1,17 @@
+function main() -> int {
+    println("=== Test Without Time Function ===");
+    
+    // Skip the time() call and see if corruption still happens
+    println("TEST 4: System Functions");
+    println("Skipping time() call");
+    println("");
+    
+    // Test 5: String Functions  
+    println("TEST 5: String Functions");
+    let test_string = "Programming";
+    println("Test string:", test_string);
+    println("String length:", length(test_string));
+    println("String length (using strlen):", strlen(test_string));
+    
+    return 0;
+}

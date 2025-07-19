@@ -1,0 +1,27 @@
+function main() {
+    println("=== Testing Built-in Functions ===");
+    
+    // Test basic I/O
+    println("Basic I/O Test:");
+    print("Hello ");
+    print("World");
+    println("");
+    
+    // Test math functions one by one
+    let num1 = 10;
+    let num2 = 5;
+    
+    println("Testing abs function:");
+    let result_abs = abs(-15);
+    println("abs(-15) = ", result_abs);
+    
+    println("Testing min function:");
+    let result_min = min(num1, num2);
+    println("min(10, 5) = ", result_min);
+    
+    println("Testing max function:");
+    let result_max = max(num1, num2);
+    println("max(10, 5) = ", result_max);
+    
+    return 0;
+}

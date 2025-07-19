@@ -1,0 +1,10 @@
+
+function add(x, y) {
+    return x + y;
+}
+
+function main() {
+    let result = add(3, 7);
+    println("add(3,7) =", result);
+    return 0;
+}

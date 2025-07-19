@@ -1,0 +1,33 @@
+function main() {
+    print("=== Testing instanceof Operator ===");
+    print("\n");
+    
+    // Basic type checking with explicit types
+    let num : int = 42;
+    let text : string = "Hello";
+    let dynamic_var;  // dynamic type
+    
+    dynamic_var = 100;
+    print("num is int: ");
+    print(num instanceof int);
+    print("\n");
+    
+    print("text is string: ");
+    print(text instanceof string);
+    print("\n");
+    
+    print("dynamic (as int) is int: ");
+    print(dynamic_var instanceof int);
+    print("\n");
+    
+    dynamic_var = "Dynamic string";
+    print("dynamic (as string) is string: ");
+    print(dynamic_var instanceof string);
+    print("\n");
+    
+    print("dynamic (as string) is int: ");
+    print(dynamic_var instanceof int);
+    print("\n");
+    
+    return 0;
+}

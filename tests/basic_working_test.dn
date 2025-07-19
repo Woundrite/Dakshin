@@ -1,0 +1,5 @@
+function main() {
+    print("Testing simple functionality");
+    print("\n");
+    return 0;
+}

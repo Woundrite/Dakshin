@@ -1,0 +1,6 @@
+
+function main() {
+    let text = "Hello";
+    println("length of Hello:", length(text));
+    return 0;
+}

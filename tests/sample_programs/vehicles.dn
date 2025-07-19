@@ -1,0 +1,196 @@
+// Object-oriented programming example with inheritance and polymorphism
+
+namespace Vehicles {
+    
+    abstract class Vehicle {
+        protected let brand: string;
+        protected let model: string;
+        protected let year: int;
+        protected let speed: float = 0.0;
+        
+        public Vehicle(brand: string, model: string, year: int) {
+            this.brand = brand;
+            this.model = model;
+            this.year = year;
+        }
+        
+        public abstract function start();
+        public abstract function stop();
+        public abstract function accelerate(amount: float);
+        
+        public function getInfo() -> string {
+            return this.year + " " + this.brand + " " + this.model;
+        }
+        
+        public function getCurrentSpeed() -> float {
+            return this.speed;
+        }
+    }
+    
+    class Car : Vehicle {
+        private let numberOfDoors: int;
+        private let fuelType: string;
+        
+        public Car(brand: string, model: string, year: int, doors: int, fuel: string) 
+            : super(brand, model, year) {
+            this.numberOfDoors = doors;
+            this.fuelType = fuel;
+        }
+        
+        public override function start() {
+            print("Starting " + this.getInfo() + " - Engine running");
+        }
+        
+        public override function stop() {
+            this.speed = 0.0;
+            print("Stopping " + this.getInfo() + " - Engine off");
+        }
+        
+        public override function accelerate(amount: float) {
+            this.speed = this.speed + amount;
+            print("Car accelerating to " + this.speed + " mph");
+        }
+        
+        public function honk() {
+            print("Beep beep!");
+        }
+    }
+    
+    class Motorcycle : Vehicle {
+        private let engineSize: int; // in cc
+        
+        public Motorcycle(brand: string, model: string, year: int, engineSize: int)
+            : super(brand, model, year) {
+            this.engineSize = engineSize;
+        }
+        
+        public override function start() {
+            print("Starting " + this.getInfo() + " - Vroom!");
+        }
+        
+        public override function stop() {
+            this.speed = 0.0;
+            print("Stopping " + this.getInfo() + " - Engine off");
+        }
+        
+        public override function accelerate(amount: float) {
+            this.speed = this.speed + (amount * 1.5); // Motorcycles accelerate faster
+            print("Motorcycle accelerating to " + this.speed + " mph");
+        }
+        
+        public function wheelie() {
+            if (this.speed > 20.0) {
+                print("Performing wheelie!");
+            } else {
+                print("Need more speed for wheelie");
+            }
+        }
+    }
+    
+    final class ElectricCar : Car {
+        private let batteryCapacity: float; // in kWh
+        private let range: int; // in miles
+        
+        public ElectricCar(brand: string, model: string, year: int, doors: int, 
+                          battery: float, range: int)
+            : super(brand, model, year, doors, "Electric") {
+            this.batteryCapacity = battery;
+            this.range = range;
+        }
+        
+        public override function start() {
+            print("Starting " + this.getInfo() + " - Silent electric power");
+        }
+        
+        public function charge() {
+            print("Charging " + this.getInfo() + " - Battery capacity: " + 
+                  this.batteryCapacity + " kWh");
+        }
+        
+        public function getRange() -> int {
+            return this.range;
+        }
+    }
+}
+
+class VehicleManager {
+    private let vehicles: list = new list();
+    
+    public function addVehicle(vehicle: Vehicles.Vehicle) {
+        this.vehicles.add(vehicle);
+        print("Added vehicle: " + vehicle.getInfo());
+    }
+    
+    public function startAllVehicles() {
+        print("\n=== Starting All Vehicles ===");
+        for (let i = 0; i < this.vehicles.size(); i = i + 1) {
+            let vehicle: Vehicles.Vehicle = this.vehicles.get(i);
+            vehicle.start();
+        }
+    }
+    
+    public function raceVehicles() {
+        print("\n=== Vehicle Race ===");
+        for (let i = 0; i < this.vehicles.size(); i = i + 1) {
+            let vehicle: Vehicles.Vehicle = this.vehicles.get(i);
+            vehicle.accelerate(30.0);
+            vehicle.accelerate(20.0);
+            
+            // Demonstrate polymorphism
+            if (vehicle instanceof Vehicles.Car) {
+                let car: Vehicles.Car = vehicle as Vehicles.Car;
+                car.honk();
+            } else if (vehicle instanceof Vehicles.Motorcycle) {
+                let bike: Vehicles.Motorcycle = vehicle as Vehicles.Motorcycle;
+                bike.wheelie();
+            }
+        }
+    }
+    
+    public function stopAllVehicles() {
+        print("\n=== Stopping All Vehicles ===");
+        for (let i = 0; i < this.vehicles.size(); i = i + 1) {
+            let vehicle: Vehicles.Vehicle = this.vehicles.get(i);
+            vehicle.stop();
+        }
+    }
+    
+    public function listVehicles() {
+        print("\n=== Vehicle Inventory ===");
+        for (let i = 0; i < this.vehicles.size(); i = i + 1) {
+            let vehicle: Vehicles.Vehicle = this.vehicles.get(i);
+            print((i + 1) + ". " + vehicle.getInfo() + 
+                  " (Current speed: " + vehicle.getCurrentSpeed() + " mph)");
+        }
+    }
+}
+
+function main() -> int {
+    let manager: VehicleManager = new VehicleManager();
+    
+    // Create different types of vehicles
+    let car1: Vehicles.Car = new Vehicles.Car("Toyota", "Camry", 2023, 4, "Gasoline");
+    let car2: Vehicles.Car = new Vehicles.Car("Honda", "Civic", 2022, 4, "Gasoline");
+    let bike: Vehicles.Motorcycle = new Vehicles.Motorcycle("Harley-Davidson", "Street 750", 2023, 750);
+    let electricCar: Vehicles.ElectricCar = new Vehicles.ElectricCar("Tesla", "Model 3", 2023, 4, 75.0, 358);
+    
+    // Add vehicles to manager
+    manager.addVehicle(car1);
+    manager.addVehicle(car2);
+    manager.addVehicle(bike);
+    manager.addVehicle(electricCar);
+    
+    // Demonstrate vehicle operations
+    manager.listVehicles();
+    manager.startAllVehicles();
+    manager.raceVehicles();
+    manager.listVehicles();
+    manager.stopAllVehicles();
+    
+    // Demonstrate electric car specific functionality
+    print("\n=== Electric Car Features ===");
+    electricCar.charge();
+    print("Range: " + electricCar.getRange() + " miles");
+    
+    return 0;
+}
