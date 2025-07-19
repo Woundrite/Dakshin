@@ -2,7 +2,7 @@
 
 **A modern, object-oriented systems programming language with advanced features including classes, inheritance, lambda expressions, dynamic typing, and comprehensive control flow constructs.**
 
-> **📊 Current Status: 70% Complete** - Core language features are production-ready with ongoing development on advanced features and critical fixes.
+> **📊 Current Status: 40% Complete** - Core language features are production-ready with ongoing development on advanced features and critical fixes.
 
 ---
 
